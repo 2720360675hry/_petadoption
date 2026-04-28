@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+</head>
+<body>
+<!-- 用户导航条片段，可在其他页面中引用 -->
+<div th:fragment="nav">
+    <nav class="navbar navbar-expand-lg navbar-light  sticky-top" style = "background: #FFC0CB">
+        <div class="container">
+<!--            不要宠物领养中心这个模块-->
+<!--            <a href="/index" class="navbar-brand">-->
+<!--              -->
+<!--                宠物领养中心-->
+<!--            </a>-->
+            <!-- 当屏幕足够小的时候 响应式导航栏的切换按钮，用于在小屏幕上展开或收起导航菜单 -->
+            <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- 导航栏菜单，使用Bootstrap的折叠组件 -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <!-- 左侧导航菜单 -->
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <!-- 首页导航链接 -->
+                        <a href="/index" class="nav-link active" style="margin-right: 230px">首页</a>
+                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        <a href="#" class="nav-link">宠物知识</a>-->
+<!--                    </li>-->
+                    <!-- 领养宠物导航链接 -->
+                    <li class="nav-item">
+                        <a href="/show" class="nav-link" style="margin-right: 230px">领养宠物</a>
+                    </li>
+                    <!-- 个人中心 链接 -->
+                    <li class="nav-item">
+                        <a href="/info" class="nav-link" style="margin-right: 230px">个人中心</a>
+                    </li>
+
+
+                </ul>
+                <!-- 右侧导航菜单 -->
+                <ul class="navbar-nav mr-5">
+                    <!-- 用户已登录时显示的下拉菜单 -->
+                    <li class="nav-item dropdown"   th:if="${session.Name != null}">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
+                            <span  th:text="${session.Name}"></span>
+                        </a>
+                        <div class="dropdown-menu">
+
+
+                            <!-- 退出登录链接 -->
+                            <a href="/logout" class="dropdown-item">退出登录</a>
+                        </div>
+                    </li>
+                    <!-- 用户未登录时显示的登录链接 -->
+                    <li class="nav-item" th:if="${session.Name == null}">
+                        <a href="/login" class="nav-link">登录</a>
+                    </li>
+                </ul>
+
+
+
+
+
+<!--                不要搜索功能-->
+<!--                <form action="/search" method="get" class="form-inline" style="position: absolute;left: 580px;">-->
+<!--                    <input class="form-control mr-sm-2" type="search" placeholder="请输入关键字" aria-label="Search" name="searchName">-->
+<!--                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">搜索</button>-->
+<!--                </form>-->
+
+            </div>
+        </div>
+    </nav>
+
+</div>
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

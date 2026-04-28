@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>宠物领养中心</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+
+	<style>
+		body{
+			margin: 0;
+			padding: 0;
+			border: 1px solid wheat;
+            /*max-width: 1200px;*/
+            background-color: #FFF5E6;
+            margin: 0 auto;
+		}
+		.d-block{
+			height:550px;
+			/*max-width: 1200px;*/
+            width: 80%;
+            margin: 0 auto;
+		}
+
+        /* 关于我们 */
+        .section {
+            padding: 1rem;
+            margin-bottom: 1.25rem;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.9375rem;
+            font-weight: bold;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .about-img img {
+            width: 9.375rem;
+            height: 12.5rem;
+            object-fit: cover;
+            margin-right: 100px;
+        }
+
+        .about-us {
+            width: 100%;
+            max-width: 28.125rem;
+            border-radius: 5%;
+            border: 0.1875rem solid #a6c1ee;
+            padding: 0.3125rem;
+            line-height: 1.6;
+            font-family: serif;
+            margin-top: 1.25rem;
+        }
+
+        /* 宠物展示 */
+        .pet-grid {
+            width: 100%;
+            max-width: 62.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+            gap: 1.25rem;
+            margin: 0 auto;
+            justify-items: center;
+        }
+
+        .zsimg {
+            width: 9.375rem;
+            height: 6.25rem;
+            object-fit: cover;
+        }
+
+        /* 页脚 */
+        .footer {
+            background-color: #f0f0f0;
+            padding: 1rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            border-top: 0.0625rem solid #ddd;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .location,
+        .contact,
+        .qq {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0 0.9375rem;
+        }
+
+        .icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.3125rem;
+        }
+
+        .nav-bottom {
+            display: flex;
+            justify-content: center;
+            margin-top: 0.625rem;
+        }
+
+        .nav-bottom-item {
+            margin: 0 0.625rem;
+            font-size: 0.875rem;
+            cursor: pointer;
+        }
+	</style>
+</head>
+<body>
+<!-- 插入用户端导航栏片段  入口哦 -->
+<div th:insert="~{navigation::nav}"></div>
+<!--宠物领养和首页一样   设置的入口-->
+<div class="container-fluid">
+
+
+    <!-- 图片轮播组件，使用Bootstrap的Carousel组件 -->
+    <div class="carousel slide carousel-fade" data-ride="carousel" data-pause="false" data-interval="2500" id="myCarousel">
+        <!-- 轮播指示点 -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+            <li data-target="#myCarousel" data-sli de-to="3"></li>
+            <li data-target="#myCarousel" data-slide-to="4"></li>
+        </ol>
+
+<div class="row">
+
+  <!--      <div class="carousel-inner"> -->
+            <div class="carousel-item active">
+                <img src="/img/slider/dog1.jpg" alt="" class="d-block">
+            </div>
+            <div class="carousel-item">
+                <img src="/img/slider/cat2.jpg" alt="" class="d-block" >
+
+            </div>
+            <div class="carousel-item">
+                <img src="/img/slider/lihuamao.jpg" alt="" class="d-block">
+
+            </div>
+			<div class="carousel-item ">
+                <img src="/img/slider/dog2.jpg" alt="" class="d-block">
+
+            </div>
+			<div class="carousel-item ">
+                <img src="/img/slider/5.jpg" alt="" class="d-block ">
+
+            </div>
+        </div>
+
+
+
+    </div>
+
+    <!-- 关于我们 -->
+    <div class="section">
+        <div class="section-title">关于我们</div>
+        <div class="about-content">
+            <span class="about-img">
+                <img src="/img/slider/边牧.jpg" alt="关于我们" style="width: 200px;height: 200px"/>
+            </span>
+            <span class="about-us">
+                user 宠物领养，是一次充满爱与责任的相遇，让无家可归的小动物重获温暖。每年，大量宠物因各种原因流落街头，它们饥寒交迫，饱受疾病折磨，
+                而领养， 正是给予它们新生的希望之光，每一个生命都值得温柔以待，愿你给宠物一个家‌‌。
+            </span>
+        </div>
+    </div>
+
+    <!-- 宠物展示 -->
+    <div class="section">
+        <div class="section-title">宠物展示</div>
+        <div class="pet-grid">
+            <img src="/img/slider/3.webp" alt="宠物1" class="zsimg" >
+            <img src="/img/slider/4.webp" alt="宠物2" class="zsimg" >
+            <img src="/img/slider/哈士奇.jpg" alt="宠物3" class="zsimg" >
+            <img src="/img/slider/9.webp" alt="宠物4" class="zsimg" >
+            <img src="/img/slider/阿拉斯加.jpg" alt="宠物5" class="zsimg" >
+            <img src="/img/slider/2.jpg" alt="宠物6" class="zsimg" >
+            <img src="/img/slider/5.jpg" alt="宠物7" class="zsimg" >
+            <img src="/img/slider/cat2.jpg" alt="宠物8" class="zsimg" >
+        </div>
+    </div>
+    <!-- 底部 -->
+    <div class="footer">
+        <div class="footer-info">
+            <div class="location">
+                <div class="icon">📍</div>
+                <div>湖北武汉</div>
+            </div>
+            <div class="contact">
+                <div class="icon">✉️</div>
+                <div>027 - 8675922</div>
+            </div>
+            <div class="qq">
+                <div class="icon">👤</div>
+                <div>@qq.com</div>
+            </div>
+        </div>
+
+        <div class="nav-bottom">
+            <div class="nav-bottom-item">首页</div>
+            <div class="nav-bottom-item">领养宠物</div>
+            <div class="nav-bottom-item">个人中心</div>
+        </div>
+    </div>
+
+
+
+
+
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

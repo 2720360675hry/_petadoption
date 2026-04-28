@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+    
+	<script src="/js/jquery.min.js"></script>
+	<script src="/js/bootstrap.bundle.min.js"></script>
+    <style type="text/css">
+		body{
+            /*max-width: 1200px;*/
+            background-color: #FFF5E6;
+            margin: 0 auto;
+
+		}
+        .card {
+            /* 设置卡片的宽度 */
+            /*width: 100%;*/
+            width: 200px;
+            /* 移除卡片默认的边框 */
+            border: none;
+            /* 卡片之间的间距 */
+            margin-bottom: 20px;
+
+            /* 确保所有卡片高度一致 */
+            /*display: flex;*/
+            /*flex-direction: column;*/
+            /*min-height: 100%;*/
+        }
+        .card-img-top {
+            /* 让图片宽度填满卡片 */
+            width: 100%;
+            /* 保持图片的纵横比 */
+            object-fit: cover;
+            /* 设置图片的高度 */
+            height: 200px;
+        }
+        .card-body {
+            /* 减少卡片内容区域的内边距 */
+            padding: 10px;
+            /* 让卡片内容填充剩余空间 */
+            /*flex-grow: 1;*/
+        }
+	</style>
+</head>
+<body>
+<!--导航条-->
+<div th:insert="~{navigation::nav}"></div>
+
+<!--这是默认用户端还没有登陆时领养宠物页面的内容 ，因为当登录后领养宠物页面有些不一样-->
+<!--在一行宽度不够时自动换行，可借助 Bootstrap 的网格系统达成。-->
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-4 g-4">
+        <div class="col" th:each="pet:${pets}">
+            <div class="card">
+                <!-- border属性去掉 -->
+                <a href="#">
+                    <img th:src="${pet.petPic}"
+                         alt="" class="card-img-top">
+                </a>
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${pet.petType}"></h5>
+                    <p style="overflow: hidden; text-overflow: ellipsis;word-break: keep-all;white-space: nowrap;">
+                        <span th:text="${pet.petDetail}"></span>
+                    </p>
+                    <a th:if="${session.Name==null}" href="/login" class="btn btn-primary">请先登录再进行操作</a>
+                    <a th:if="${session.Name!=null}" th:href="@{'/adoption/'+${pet.petId}}" class="btn btn-primary">想领养</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>
